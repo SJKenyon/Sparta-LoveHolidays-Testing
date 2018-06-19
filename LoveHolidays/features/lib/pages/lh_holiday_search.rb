@@ -8,6 +8,10 @@ class HolidaySearch
     find_link('2 Adults').visible?
   end
 
+  def spain_filter
+    find_link('Spain').visible?
+  end
+
   def bed_and_breakfast_filter
     click_link("Bed and Breakfast")
   end
@@ -32,8 +36,8 @@ class HolidaySearch
     find(:xpath, "/html/body/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div[2]/div/div/div/div/label").click
   end
 
-  def pp_visable
-    find(:xpath, "/html/body/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[4]/div[1]/div/div/article/div[2]/div/div[2]/div/div/span/div[2]/span/span").visable?
+  def delete_filter
+    find(:xpath, "/html/body/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div/div/span[3]/div/a/i").click
   end
 
 end

@@ -1,18 +1,21 @@
-Feature: As a site user I want to be able to book a holiday
+Feature: As a site user I want to be able to view holidays
 
+  @Spain
   Scenario: If I click to view Spain holidays, it should filter my results
 
     Given I am on the homepage
-    When I write Spain in the destination
-    And I click search
+    And I write Spain in the destination
+    When I click search
     Then it should filter my results to Spain
 
+  @People
   Scenario: If I want to view holidays, it should be standard that I am booking for 2 people
 
     Given I am on the homepage
     When I click to view all holidays
     Then it should filter my results to two adults
 
+  @Reset
   Scenario: I should be able to reset my search results
 
     Given I am on the homepage
@@ -20,6 +23,7 @@ Feature: As a site user I want to be able to book a holiday
     When I click reset
     Then it should remove all filters
 
+  @Filters
   Scenario: I should be able to remove one filter from my search results
 
     Given I am on the homepage
@@ -27,6 +31,7 @@ Feature: As a site user I want to be able to book a holiday
     When I click X on one of the filters
     Then it should be removed
 
+  @Total
   Scenario: I should be able to view the total of my holiday for multiple people
 
     Given I am on the homepage

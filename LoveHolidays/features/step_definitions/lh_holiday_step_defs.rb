@@ -4,20 +4,16 @@ Given("I am on the homepage") do
   lh_homepage.visit_home_page
 end
 
-And("I click on destinations") do
-  lh_homepage.click_destinations_tab
+And("I write Spain in the destination") do
+  lh_homepage.write_spain
 end
 
-When("I click to view all holidays in spain") do
-  pending
-end
-
-And("I click search") do
-  lh_spain_holidays.click_search
+When("I click search") do
+  lh_homepage.click_search
 end
 
 Then("it should filter my results to Spain") do
-  pending
+  lh_holiday_search.spain_filter
 end
 
 # If I want to view holidays, it should be standard that I am booking for 2 people
@@ -44,18 +40,17 @@ When("I click reset") do
 end
 
 Then("it should remove all filters") do
-  expect(lh_holiday_search.bnb_visable).to eq FALSE
-  expect(lh_holiday_search.beach_visable).to eq FALSE
+  page.should have_no_selector(:xpath, "/html/body/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div/div/span[3]/div/a/span")
 end
 
 # I should be able to remove one filter from my search results
 
 When("I click X on one of the filters") do
-  pending # Write code here that turns the phrase above into concrete actions
+  lh_holiday_search.delete_filter
 end
 
 Then("it should be removed") do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.should have_no_selector(:xpath, "/html/body/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div/div/span[4]/div/a/span")
 end
 
 # I should be able to view the total of my holiday for multiple people
@@ -66,9 +61,8 @@ end
 
 When("I toggle to total rather than per person") do
   lh_holiday_search.toggle_total
-  sleep 5
 end
 
 Then("it should show the full price for all people") do
-  expect(lh_holiday_search.pp_visable).to eq FALSE
+  page.should have_no_selector(:xpath, "/html/body/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[4]/div[1]/div/div/article/div[1]/span/div[2]/div[1]/div/div/div/span/span")
 end
